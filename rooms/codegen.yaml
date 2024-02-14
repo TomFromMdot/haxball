@@ -1,0 +1,11 @@
+overwrite: true
+schema: "./sharedable/graphql/schema.gql"
+documents: "sharedable/graphql/*.gql"
+generates:
+  global/types/graphql.ts:
+    congif:
+      rawRequest: true
+    plugins: 
+      - typescript 
+      - typescript-operations
+      - typescript-graphql-request

@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-white h-[calc(100vh-1rem)] font-display;
+  }
+  .wrapper {
+    @apply max-w-[800px] w-[95%] my-0 mx-auto;
+  }
+}
+
+.ranking::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ranking::-webkit-scrollbar-track {
+  background: #141721;
+}
+
+.ranking::-webkit-scrollbar-thumb {
+  background: #202332;
+  border-radius: 5px;
+}
+
+.overlay{
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background: #111218;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  flex-direction: column;
+}
+
+.overlay h1{
+  margin-top: 1em;
+}
+
+.span{
+  color: #33ceff;
+  font-weight: bold;
+}
+
+.discord{
+  color: #7289DA;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.discord :hover{
+  color: purple;
+  transition: all 1.5s ease-in-out;
+  font-weight: bold;
+  text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+mutation UpdateRoomState($input: UpdateRoomStateInput!) {
+  updateRoomState(input: $input) {
+    auth
+  }
+}
+
+mutation UpdatePlayer($input: UpdatePlayerInput!) {
+  updatePlayer(input: $input) {
+    auth
+  }
+}
+
+mutation CreateOrder($input: CreatedOrderInput!) {
+  createOrder(input: $input) {
+    order {
+      status
+      code
+      value
+    }
+    payment {
+      clientSecret
+    }
+  }
+}
+
+mutation ReceiveOrder($input: ReceiveOrderInput!) {
+  receiveOrder(input: $input) {
+    status
+  }
+}

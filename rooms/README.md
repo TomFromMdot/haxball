@@ -1,0 +1,1 @@
+npx tsx room-manager.ts --configFile="6MAN_CLASSIC.ts"

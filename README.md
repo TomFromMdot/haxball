@@ -22,6 +22,10 @@ For example, when the project includes 10 different rooms with individual files,
 
 To increase code safety and quality, the project implements strong type safety mechanisms at all levels. In practice, this means that all data operations are tightly bound to their types, eliminating many potential errors during compilation and facilitating code understanding and maintenance. With strong type safety, developers can be confident they are using the correct data types, resulting in more reliable and efficient code.
 
+#### End2End Type Safety
+
+The End-to-End Type Safety approach encompasses full consistency of data types throughout the application stack. The goal is to maintain a single source of truth regarding types across all layers of the application. Ideally, this consistency should be automatically maintained in the event of changes to the database schema.
+
 ---
 
 #### Room as a HaxBall Server

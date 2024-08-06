@@ -1,0 +1,219 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BasicPlayer {
+  id: String!
+  name: String!
+  auth: String!
+  country: String
+}
+
+type Statistics {
+  goals: Float!
+  owngoals: Float!
+  assists: Float!
+  wins: Float!
+  defeats: Float!
+  points: Float!
+  draws: Float!
+  games: Float!
+  coins: Float!
+  rank: String!
+}
+
+type RoomState {
+  room: String!
+  role: String!
+  items: [ItemOutput!]!
+  statistics: Statistics!
+}
+
+union ItemOutput = ColorType | BoosterType
+
+type ColorType {
+  type: String!
+  value: Hex!
+}
+
+"""Hexadecimal scalar type"""
+scalar Hex
+
+type BoosterType {
+  type: String!
+  value: String!
+}
+
+type UpsertPlayerOutput {
+  player: Player!
+  roomState: RoomState!
+}
+
+type Player {
+  id: String!
+  name: String!
+  auth: String!
+  conn: String!
+  country: String
+
+  """e.g roomsState(input: {rooms: ['RS_1']})"""
+  roomsState(input: RoomStateInput!): [RoomState!]!
+}
+
+input RoomStateInput {
+  rooms: [String!]
+}
+
+type UpdateRoomStateOutput {
+  id: String!
+  name: String!
+  auth: String!
+  conn: String!
+  country: String
+
+  """e.g roomsState(input: {rooms: ['RS_1']})"""
+  roomsState(input: RoomStateInput!): [RoomState!]!
+  statistics: Statistics
+}
+
+type GetPlayersOutput {
+  player: BasicPlayer!
+  statistics: Statistics!
+}
+
+type TData {
+  type: String!
+  value: Float
+}
+
+type GetItemOutput {
+  id: String!
+  name: String!
+  stripeItemId: String!
+  price: Float!
+  img: String!
+  type: String!
+  data: TData!
+}
+
+type Order {
+  status: EStatus!
+  code: String!
+  value: String
+}
+
+enum EStatus {
+  Created
+  Completed
+  Succeeded
+  Failed
+}
+
+type Payment {
+  clientSecret: String!
+}
+
+type CreatedOrderOutput {
+  order: Order!
+  payment: Payment!
+}
+
+type ReceiveOrderOutput {
+  status: Boolean!
+}
+
+type Query {
+  authorization(input: AuthorizationInput!): String!
+  upsertPlayer(input: UpsertPlayerInput!): UpsertPlayerOutput
+  getItems: [GetItemOutput!]!
+  getPlayers(input: GetPlayersInput!): [GetPlayersOutput!]!
+}
+
+input AuthorizationInput {
+  password: String!
+}
+
+input UpsertPlayerInput {
+  player: UpsertPlayerPlayerInput!
+  roomState: UpsertPlayerRoomStateInput!
+}
+
+input UpsertPlayerPlayerInput {
+  name: String!
+  auth: String!
+  conn: String!
+  country: String
+}
+
+input UpsertPlayerRoomStateInput {
+  room: String!
+}
+
+input GetPlayersInput {
+  room: String!
+  page: Float!
+  sortBy: String!
+  name: String
+}
+
+type Mutation {
+  updatePlayer(input: UpdatePlayerInput!): Player!
+  updateRoomState(input: UpdateRoomStateInput!): UpdateRoomStateOutput!
+  receiveOrder(input: ReceiveOrderInput!): ReceiveOrderOutput!
+  createOrder(input: CreatedOrderInput!): CreatedOrderOutput!
+}
+
+input UpdatePlayerInput {
+  filter: UpdatePlayerFilterInput!
+  fields: UpdatePlayerFieldsInput!
+}
+
+input UpdatePlayerFilterInput {
+  auth: String!
+}
+
+input UpdatePlayerFieldsInput {
+  id: String
+  name: String
+  auth: String
+  conn: String
+  country: String
+}
+
+input UpdateRoomStateInput {
+  filter: UpdateRoomStateFilterInput!
+  fields: UpdateRoomStateFieldsInput!
+}
+
+input UpdateRoomStateFilterInput {
+  auth: String!
+  room: String!
+}
+
+input UpdateRoomStateFieldsInput {
+  statistics: UpdateRoomStateStatisticsInput!
+}
+
+input UpdateRoomStateStatisticsInput {
+  goals: Float
+  owngoals: Float
+  assists: Float
+  wins: Float
+  defeats: Float
+  points: Float
+  draws: Float
+  games: Float
+  coins: Float
+  rank: String
+}
+
+input ReceiveOrderInput {
+  code: String!
+  room: String!
+  auth: String!
+}
+
+input CreatedOrderInput {
+  itemId: String!
+  value: String
+}

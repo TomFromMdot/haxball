@@ -1,0 +1,24 @@
+{   
+    "esm": true,
+  
+    "compilerOptions": {
+      "moduleResolution":"node",
+      "sourceMap": true,
+      "baseUrl": ".",
+      "outDir": "./dist",
+      "module": "ESNext",
+      "target": "ES2017",
+      "esModuleInterop": true,
+
+      "paths": {
+        "@context": ["./index.ts"],
+        "@sharedable/*": ["./sharedable/*"],
+        "@utils": ["./src/utils"],
+        "@types": ["./global/types/types.ts"],
+      },
+      "lib": ["es2017", "dom"]
+    },
+    
+    "exclude": ["node_modules"],
+    "include": ["./"]
+  }
